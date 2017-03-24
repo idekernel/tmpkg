@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>tmpnb</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+
+  <div class="jumbotron">
+    <div id="main" class="container text-center">
+      <h1>tmpnb</h1>
+      <div id="message">
+        <noscript>
+          <p>You'll need JavaScript enabled to enjoy this site!</p>
+        </noscript>
+
+        <div id="error-message">
+            <h2> Ah shucks! </h2>
+            <h3> Looks like there was an error! </h3>
+            <h4> Error Code: {{status_code}} </h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {% include "../ga.html" %}
+
+</body>
+</html>
