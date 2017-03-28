@@ -239,9 +239,7 @@ cd tmpnb
 # NOTE: stops and deletes all containers
 make dev
 ```
-docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN \
-           -v /var/run/docker.sock:/docker.sock \
-           idekernel/proxy python orchestrate.py --image='idekernel/kernel' --command="jupyter kernelgateway --ip=0.0.0.0 --port {port}"
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN -v /var/run/docker.sock:/docker.sock idekernel/proxy python orchestrate.py --image='idekernel/kernel' --command="jupyter kernelgateway --ip=0.0.0.0 --port {port}"
 
 #### Troubleshooting
 
