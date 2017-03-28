@@ -56,7 +56,7 @@ Then, you can launch the container with `docker-compose up`, no building is requ
 If you need to set the `docker-version` or other options, they can be passed to `jupyter/tmpnb` directly:
 
 ```
-docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN -v /var/run/docker.sock:/docker.sock jupyter/tmpnb python orchestrate.py --cull-timeout=60 --docker-version="1.13" --command="jupyter notebook --NotebookApp.base_url={base_path} --ip=0.0.0.0 --port {port}"
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN -v /var/run/docker.sock:/docker.sock jupyter/tmpnb python orchestrate.py --cull-timeout=60 --docker-version="1.13" --command="jupyter notebook --NotebookApp.base_url={base_path} --ip=0.0.0.0 --port={port}"
 ```
 
 Note that if you do not pass a value to `docker-version`, tmpnb will automatically use the Docker API version provided by the server.
@@ -239,7 +239,7 @@ cd tmpnb
 # NOTE: stops and deletes all containers
 make dev
 ```
-docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN -v /var/run/docker.sock:/docker.sock idekernel/proxy python orchestrate.py --image='idekernel/kernel' --command="jupyter kernelgateway --ip=0.0.0.0 --port {port}"
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN -v /var/run/docker.sock:/docker.sock idekernel/proxy python orchestrate.py --image='idekernel/kernel' --command="jupyter kernelgateway --ip=0.0.0.0 --port={port}"
 
 #### Troubleshooting
 
