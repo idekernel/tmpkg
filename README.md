@@ -240,6 +240,9 @@ cd tmpnb
 make dev
 ```
 
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=httpproxy idekerneltpproxy --logging='debug' --default-target http://127.0.0.1:9999
+
+
 docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=proxy -v /var/run/docker.sock:/docker.sock  idekernel/proxy python orchestrate.py --logging=debug --redirect-uri='/api/kernelspecs' --allow-origin='*' --allow-methods='GET,POST' --image='idekernel/kernel' --command="jupyter kernelgateway --KernelGatewayApp.allow_methods='GET,POST' --debug --KernelGatewayApp.allow_origin='*' --ip=0.0.0.0 --port {port}"
 
 #### Troubleshooting
