@@ -246,6 +246,12 @@ docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=tmpkg -v /var/r
 
 docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=proxy -v /var/run/docker.sock:/docker.sock idekernel/proxy python orchestrate.py --logging=debug --image='jupyter/base-notebook' --command='jupyter notebook --no-browser --port {port} --ip=0.0.0.0 --NotebookApp.base_url=/{base_path} --NotebookApp.port_retries=0 --NotebookApp.token="" --NotebookApp.disable_check_xsrf=True'
 
+#### new
+
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=proxy idekernel/proxy --log-level debug --default-target http://10.141.158.38:9999
+
+docker run --net=host -d -e CONFIGPROXY_AUTH_TOKEN=$TOKEN --name=tmpkg -v /var/run/docker.sock:/docker.sock idekernel/tmpkg python orchestrate.py --container-ip=10.141.158.38 --logging=debug --redirect-uri=/ --allow-origin=*  --image=idekernel/kernel --command="jupyter kernelgateway --KernelGatewayApp.base_url=/{base_path} --debug --KernelGatewayApp.allow_origin=* --ip=0.0.0.0 --port {port}"
+
 #### Troubleshooting
 
 If you are receiving 500 errors after changing the proxy port, make sure
